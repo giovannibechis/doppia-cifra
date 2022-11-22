@@ -114,7 +114,6 @@
       }
     }
   },
-  "defaultProject": "doppia-cifra",
   "cli": {
     "analytics": false
   }
