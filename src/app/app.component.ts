@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,26 +8,23 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'doppia-cifra';
+  res: any;
+
+  constructor(
+    private httpClient: HttpClient
+  ) {
+  }
 
   ngOnInit(): void {
-    this.fetchAsync();
-  }
-
-  async  doFetch(): Promise<void> {
-
-    const rsp = await fetch(
-      'http://it.wikipedia.org/w/api.php?action=opensearch&limit=10&format=json&search=belotti'
-    );
-    return await rsp.json();
-  }
-
-  async fetchAsync(): Promise<void> {
-    try {
-      const result = await this.doFetch();
-      console.log(result);
-    } catch (err: any) {
-      console.error(err.message);
-    }
+    // this.fetchAsync();
+    const search = `https://it.wikipedia.org/w/api.php?action=query&format=json&prop=links&list=search&srsearch=belotti&incategory=Calciatori_italiani_del_XX_secolo&origin=*`;
+    this.httpClient.get(`${search}`)
+      .subscribe({
+          next: (res: any) => {
+            console.log(res);
+            this.res = res;
+          }
+      });
   }
 
 }
