@@ -48,9 +48,9 @@
                 }
               ],
               "optimization": false,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": true,
-              "namedChunks": true,
+              "namedChunks": false,
               "extractLicenses": true,
               "budgets": [
                 {
@@ -64,6 +64,11 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
           }
         },
@@ -75,8 +80,12 @@
           "configurations": {
             "production": {
               "buildTarget": "doppia-cifra:build:production"
+            },
+            "development": {
+              "buildTarget": "doppia-cifra:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

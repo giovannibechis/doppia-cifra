@@ -8,8 +8,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class WikipediaService {
 
-  constructor(private http: HttpClient) {
-
+  constructor(
+    private http: HttpClient) {
   }
 
   searchPlayer(playerName: string): Observable<any> {
