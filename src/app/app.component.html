@@ -34,7 +34,7 @@
         [disabled]="loading() || !searchTerm.trim()"
       >
 
-          <span  *ngIf="loading()" class="loading"></span>
+        <span  *ngIf="loading()" class="loading"></span>
         {{ loading() ? 'Ricerca...' : 'Cerca' }}
       </button>
     </div>
@@ -81,7 +81,7 @@
           <line x1="8" y1="2" x2="8" y2="6"/>
           <line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
-        Statistiche per stagione
+        Statistiche presenze/reti per stagione
       </h3>
 
       <div class="stats-table-container">
@@ -90,18 +90,18 @@
           <tr>
             <th>Stagione</th>
             <th>Squadra</th>
-            <th>Goal</th>
-            <th>Competizione</th>
+            <th>Presenze</th>
+            <th>Reti</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let stat of playerData()?.careerStats">
             <td>{{ stat.season }}</td>
             <td>{{ stat.team }}</td>
+            <td>{{ stat.appearances }}</td>
             <td>
               <span class="goal-badge">{{ stat.goals }}</span>
             </td>
-            <td>{{ stat.competition }}</td>
           </tr>
           </tbody>
         </table>
